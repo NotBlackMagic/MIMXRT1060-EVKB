@@ -439,8 +439,7 @@ static void DEMO_InitTouch(void)
 
     BOARD_LPI2C_Init(TOUCH_I2C, TOUCH_I2C_CLOCK_FREQ);
 
-//    status = GT911_Init(&s_touchHandle, &s_touchConfig);
-    status = kStatus_Success;
+    status = GT911_Init(&s_touchHandle, &s_touchConfig);
 
     if (kStatus_Success != status)
     {
@@ -448,7 +447,7 @@ static void DEMO_InitTouch(void)
         assert(false);
     }
 
-//    GT911_GetResolution(&s_touchHandle, &s_touchResolutionX, &s_touchResolutionY);
+    GT911_GetResolution(&s_touchHandle, &s_touchResolutionX, &s_touchResolutionY);
 }
 
 /* Will be called by the library to read the touchpad */
@@ -457,15 +456,14 @@ static void DEMO_ReadTouch(lv_indev_drv_t *drv, lv_indev_data_t *data)
 	static int touch_x = 0;
     static int touch_y = 0;
 
-//    if (kStatus_Success == GT911_GetSingleTouch(&s_touchHandle, &touch_x, &touch_y))
-//    {
-//        data->state = LV_INDEV_STATE_PR;
-//    }
-//    else
-//    {
-//        data->state = LV_INDEV_STATE_REL;
-//    }
-    data->state = LV_INDEV_STATE_REL;
+    if (kStatus_Success == GT911_GetSingleTouch(&s_touchHandle, &touch_x, &touch_y))
+    {
+        data->state = LV_INDEV_STATE_PR;
+    }
+    else
+    {
+        data->state = LV_INDEV_STATE_REL;
+    }
 
     /*Set the last pressed coordinates*/
     data->point.x = touch_x * LCD_WIDTH / s_touchResolutionX;

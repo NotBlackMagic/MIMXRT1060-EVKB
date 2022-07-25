@@ -3,4 +3,4 @@ clean2:
 	-$(RM) $(OBJS) *.elf
 	-@echo ' '
 
-*.elf: $(wildcard ../board/linker_scripts/link.lds)
+*.elf: $(wildcard ..D:/Projects/Personal/VUHFRadioDSP/Software/RT-Thread/VUHFRadioDSP/board/linker_scripts/link.lds)
