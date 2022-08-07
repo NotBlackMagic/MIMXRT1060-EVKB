@@ -80,6 +80,7 @@
 #define RT_USING_I2C
 #define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
+#define RT_USING_RTC
 
 /* Using USB */
 
@@ -193,6 +194,10 @@
 
 /* peripheral libraries and drivers */
 
+
+/* Kendryte SDK */
+
+/* end of Kendryte SDK */
 /* end of peripheral libraries and drivers */
 
 /* AI packages */
@@ -234,6 +239,7 @@
 #define BSP_USING_LPUART1
 #define BSP_USING_PXP
 #define BSP_USING_CACHE
+#define BSP_USING_RTC
 /* end of On-chip Peripheral Drivers */
 
 /* Board extended module Drivers */
